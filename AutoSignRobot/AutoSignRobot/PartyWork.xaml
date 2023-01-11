@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="AutoSignRobot.PartyWork"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutoSignRobot"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="WhiteSmoke">
+    <Grid>
+        <Label x:Name="LblStartTime" Content="时间：" HorizontalAlignment="Left" Height="26" Margin="19,57,0,0" VerticalAlignment="Top" Width="51"/>
+        <Label x:Name="LblLocation" Content="地点：" HorizontalAlignment="Left" Height="25" Margin="19,95,0,0" VerticalAlignment="Top" Width="49"/>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="6" Margin="63,95,0,0"  Width="289" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBox x:Name="TbxLocation" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="289"/>
+        </Border>
+        <Label x:Name="LblProceedings" Content="议程：" HorizontalAlignment="Left" Height="26" Margin="19,136,0,0" VerticalAlignment="Top" Width="51"/>
+        <Border Background="#69709D" BorderThickness="1" CornerRadius="10" Margin="63,134,0,0"  Width="545" Height="59" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBox x:Name="TbxProceedings" Background="Transparent" Foreground="WhiteSmoke" BorderThickness="0" Margin="5,0,0,0" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="540" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
+        </Border>
+        <DatePicker x:Name="DpStartDate" Background="Transparent" BorderThickness="0.5" HorizontalAlignment="Left" Margin="64,57,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LblPltAfftion" Content="政治面貌：" HorizontalAlignment="Left" Height="24" Margin="171,213,0,0" VerticalAlignment="Top" Width="66"/>
+        <ComboBox x:Name="CbxPltAfftion" Background="Transparent" BorderThickness="0"  HorizontalAlignment="Left" Height="25" Margin="240,212,0,0" VerticalAlignment="Top" Width="88" SelectionChanged="CbxPltAfftion_SelectionChanged" IsEditable="True" IsTextSearchEnabled="True"/>
+        <Label x:Name="LblProfession" Content="专业：" HorizontalAlignment="Left" Height="24" Margin="30,213,0,0" VerticalAlignment="Top" Width="38"/>
+        <ComboBox x:Name="CbxProfession" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="25" Margin="71,212,0,0" VerticalAlignment="Top" Width="76" SelectionChanged="CbxProfession_SelectionChanged" IsEditable="True" IsTextSearchEnabled="True"/>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="5" Margin="514,325,0,0" Width="100" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Button x:Name="BtGenerate" Content="生成Word文档" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="100" Click="BtGenerate_Click"/>
+        </Border>
+        <ListView x:Name="LvePeopleInfo" Background="Transparent" BorderThickness="0.5" HorizontalAlignment="Left" Height="148" Margin="26,244,0,0" VerticalAlignment="Top" Width="435" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Multiple">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="人员名单信息">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=AttendeesName}" Header="姓名" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=AttendeesDepartment}" Header="部门" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=AttendeesProfession}" Header="专业" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=AttendeesPltaffiliation}" Header="政治面貌" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="BtAddItem" Content="+" HorizontalAlignment="Left" Height="15" Margin="411,229,0,0" VerticalAlignment="Top" Width="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="BtAddItem_Click" BorderThickness="0.5,0.5,0.5,0.5" Background="Transparent"/>
+        <Button x:Name="BtReduceItem" Content="-" HorizontalAlignment="Left" Height="15" Margin="435,229,0,0" VerticalAlignment="Top" Width="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="BtReduceItem_Click" BorderThickness="0.5,0.5,0.5,0.5" Background="Transparent"/>
+        <Label x:Name="LblTitle" Content="标题：" HorizontalAlignment="Left" Margin="19,17,0,0" VerticalAlignment="Top"/>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="6" Margin="64,15,0,0"  Width="504" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBox x:Name="TbxTitle" Background="Transparent" Foreground="WhiteSmoke" BorderThickness="0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="504" Height="28" VerticalContentAlignment="Center"/>
+        </Border>
+        <Border Background="#69709D" BorderThickness="1" CornerRadius="5" Margin="514,271,0,0"  Width="100" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Button x:Name="BtHelp" Content="使用帮助" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="100" Click="BtHelp_Click"/>
+        </Border>
+    </Grid>
+</UserControl>

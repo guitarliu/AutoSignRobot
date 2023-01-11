@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="AutoSignRobot.TrainTimeWork"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutoSignRobot"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="WhiteSmoke">
+    <Grid>
+        <Label x:Name="LblStartTime" Content="起始时间：" HorizontalAlignment="Left" Height="26" Margin="43,57,0,0" VerticalAlignment="Top" Width="66"/>
+        <Label x:Name="LblTalker" Content="培训讲师：" HorizontalAlignment="Left" Height="26" Margin="44,137,0,0" VerticalAlignment="Top" Width="65"/>
+        <Label x:Name="LblPtcpDepartment" Content="参加培训部门：" HorizontalAlignment="Left" Height="25" Margin="21,184,0,0" VerticalAlignment="Top" Width="88"/>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="6" Margin="111,136,0,0" Width="131" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBox x:Name="TbxTalker" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="131"/>
+        </Border>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="6" Margin="111,184,0,0" Width="289" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBox x:Name="TbxPtcpDepartment" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="289"/>
+        </Border>
+        <Label x:Name="LblPtcpName" Content="培训名称：" HorizontalAlignment="Left" Height="26" Margin="44,96,0,0" VerticalAlignment="Top" Width="65"/>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="6"  Margin="111,94,0,0" Width="504" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBox x:Name="TbxPtcpName" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="504"/>
+        </Border>
+        <Label x:Name="LblEndTime" Content="终止时间：" HorizontalAlignment="Left" Height="26" Margin="368,57,0,0" VerticalAlignment="Top" Width="66"/>
+        <DatePicker x:Name="DpStartDate" BorderThickness="0.5" HorizontalAlignment="Left" Margin="111,57,0,0" VerticalAlignment="Top" Background="Transparent"/>
+        <DatePicker x:Name="DpEndDate" BorderThickness="0.5" HorizontalAlignment="Left" Margin="431,57,0,0" VerticalAlignment="Top" Background="Transparent"/>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="6" Margin="211,56,0,0" Width="75" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBox x:Name="TbxStartTime" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" VerticalContentAlignment="Center"/>
+        </Border>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="6" Margin="520,56,0,0" Width="75" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBox x:Name="TbxEndTime" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" VerticalContentAlignment="Center"/>
+        </Border>
+        <Label x:Name="LblDepartment" Content="部门:" HorizontalAlignment="Left" Height="24" Margin="167,233,0,0" VerticalAlignment="Top" Width="38"/>
+        <ComboBox x:Name="CbxDepartment" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="25" Margin="212,232,0,0" VerticalAlignment="Top" Width="88" SelectionChanged="CbxDepartment_SelectionChanged" IsEditable="True" IsTextSearchEnabled="True"/>
+        <Label x:Name="LblProfession" Content="专业:" HorizontalAlignment="Left" Height="24" Margin="27,233,0,0" VerticalAlignment="Top" Width="38"/>
+        <ComboBox x:Name="CbxProfession" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="25" Margin="75,232,0,0" VerticalAlignment="Top" Width="76" SelectionChanged="CbxProfession_SelectionChanged" IsEditable="True" IsTextSearchEnabled="True"/>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="5" Margin="520,355,0,0" Width="100" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Button x:Name="BtGenerate" Content="生成Excel文档" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="100" Click="BtGenerate_Click"/>
+        </Border>
+        <ListView x:Name="LvePeopleInfo" BorderThickness="0.5" HorizontalAlignment="Left" Height="148" Margin="26,275,0,0" VerticalAlignment="Top" Width="435" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Multiple">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="人员名单信息">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=AttendeesName}" Header="姓名" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=AttendeesDepartment}" Header="部门" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=AttendeesProfession}" Header="专业" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=AttendeesTelePhone}" Header="电话" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="BtAddItem" Content="+" HorizontalAlignment="Left" Height="15" Margin="411,260,0,0" VerticalAlignment="Top" Width="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="BtAddItem_Click" BorderThickness="0.5,0.5,0.5,0.5" Background="Transparent"/>
+        <Button x:Name="BtReduceItem" Content="-" HorizontalAlignment="Left" Height="15" Margin="435,260,0,0" VerticalAlignment="Top" Width="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="BtReduceItem_Click" BorderThickness="0.5,0.5,0.5,0.5" Background="Transparent"/>
+        <Label x:Name="LblTitle" Content="标题：" HorizontalAlignment="Left" Margin="63,14,0,0" VerticalAlignment="Top" Width="40"/>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="6"  Margin="111,15,0,0" Width="504" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBox x:Name="TbxTitle" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="504" Height="28" VerticalContentAlignment="Center"/>
+        </Border>
+        <Border  Background="#69709D" BorderThickness="1" CornerRadius="6" Margin="520,301,0,0" Width="100" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Button x:Name="BtHelp" Content="使用帮助" Background="Transparent" BorderThickness="0" Foreground="WhiteSmoke" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="100" Click="BtHelp_Click"/>
+        </Border>
+    </Grid>
+</UserControl>
